@@ -6,7 +6,7 @@ module.exports = {
     'react-app',
     'plugin:prettier/recommended',
   ],
-  plugins: ['@typescript-eslint', 'react', 'jsx-a11y', 'react-intl'],
+  plugins: ['@typescript-eslint', 'react', 'jsx-a11y', 'react-intl', 'import'],
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports,
@@ -29,6 +29,8 @@ module.exports = {
     'import/no-dynamic-require': 0,
     'import/no-unresolved': 2,
     'import/prefer-default-export': 0,
+    'import/imports-first': ['error', 'absolute-first'],
+    'import/newline-after-import': 'error',
     indent: [
       2,
       2,
@@ -75,6 +77,12 @@ module.exports = {
   settings: {
     react: {
       version: 'detect',
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {},
     },
   },
 };

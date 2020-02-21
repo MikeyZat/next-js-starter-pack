@@ -16,8 +16,16 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "baseUrl": "./",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "common/*": ["src/components/common/*"],
+      "hooks/*": ["src/utils/hooks/*"],
+      "actions/*": ["src/action/*"],
+      "reducers/*": ["src/reducers/*"]
+    }
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "out", ".next"],
   "include": ["**/*.ts", "**/*.tsx"]
 }
