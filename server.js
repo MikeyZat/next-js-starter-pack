@@ -44,7 +44,7 @@ const getMessages = (locale) => {
 app.prepare().then(() => {
   createServer((req, res) => {
     const accept = accepts(req);
-    const locale = accept.language(supportedLanguages) || 'en';
+    const locale = accept.language(supportedLanguages) || 'pl';
     req.locale = locale;
     req.localeDataScript = getLocaleDataScript(locale);
     req.messages = dev ? {} : getMessages(locale);

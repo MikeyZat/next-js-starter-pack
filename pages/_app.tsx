@@ -1,7 +1,9 @@
 import App from 'next/app';
-import { NextPageContext, NextPage } from 'next';
 import React from 'react';
-import { createIntl, createIntlCache, RawIntlProvider, IntlConfig } from 'react-intl';
+import { createIntl, createIntlCache, RawIntlProvider } from 'react-intl';
+import { AppContextType } from 'next/dist/next-server/lib/utils';
+import { Router } from 'next/dist/client/router';
+import { IntlProps } from 'src/types/intlTypes';
 
 // This is optional but highly recommended
 // since it prevents memory leak
@@ -16,13 +18,8 @@ declare global {
   }
 }
 
-interface IntlProps {
-  locale: IntlConfig['locale'];
-  messages: IntlConfig['messages'];
-}
-
 export default class MyApp extends App<IntlProps> {
-  static async getInitialProps({ Component, ctx }: { Component: NextPage; ctx: NextPageContext }) {
+  static async getInitialProps({ Component, ctx }: AppContextType<Router>) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
@@ -32,6 +29,7 @@ export default class MyApp extends App<IntlProps> {
     // Get the `locale` and `messages` from the request object on the server.
     // In the browser, use the same values that the server serialized.
     const { req } = ctx;
+    // @ts-ignore
     const { locale, messages } = req || window.__NEXT_DATA__.props;
 
     return { pageProps, locale, messages };
