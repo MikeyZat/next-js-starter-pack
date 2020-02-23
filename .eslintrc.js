@@ -25,7 +25,16 @@ module.exports = {
     'no-tabs': 2,
     'arrow-parens': ['error', 'always'],
     'arrow-body-style': [2, 'as-needed'],
-    'comma-dangle': [2, 'always-multiline'],
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiliner',
+        functions: 'never',
+      },
+    ],
     'import/no-dynamic-require': 0,
     'import/no-unresolved': 2,
     'import/prefer-default-export': 0,
