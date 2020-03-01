@@ -9,6 +9,8 @@ const Index: NextPage<IndexProps> = (props) => {
   return (
     <div>
       <div>{props.name}</div>
+      <div>{props.name}</div>
+      <div>{props.name}</div>
       <div>{intl.formatMessage(messages.description)}</div>
       <DatePicker />
     </div>
@@ -19,7 +21,7 @@ export default Index;
 
 Index.getInitialProps = () => {
   return {
-    name: 'Hello',
+    name: "Hello, what's your wish",
   };
 };
 

@@ -12,6 +12,7 @@ const { createServer } = require('http');
 const accepts = require('accepts');
 const glob = require('glob');
 const next = require('next');
+const path = require('path');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -38,13 +39,14 @@ const getLocaleDataScript = (locale) => {
 // locale. These will only be used in production, in dev the `defaultMessage` in
 // each message description in the source code will be used.
 const getMessages = (locale) => {
+  console.log(path.resolve(`./lang/${locale}.json`));
   return require(`./lang/${locale}.json`);
 };
 
 app.prepare().then(() => {
   createServer((req, res) => {
     const accept = accepts(req);
-    const locale = accept.language(supportedLanguages) || 'pl';
+    const locale = accept.language(supportedLanguages) || 'en';
     req.locale = locale;
     req.localeDataScript = getLocaleDataScript(locale);
     req.messages = dev ? {} : getMessages(locale);

@@ -1,7 +1,5 @@
 import React from 'react';
 import Document, { Head, Main, NextScript, DocumentContext } from 'next/document';
-// @ts-ignore
-import stylesheet from 'antd/dist/antd.min.css';
 
 import { IntlProps } from 'src/types/intlTypes';
 // The document (which is SSR-only) needs to be customized to expose the locale
@@ -27,18 +25,14 @@ export default class IntlDocument extends Document<{ localeDataScript: string } 
 
     return (
       <html>
-        <Head>
-          <title>Default title</title>
-          <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
           <script src={polyfill} />
           <script
             dangerouslySetInnerHTML={{
-              __html: stylesheet || this.props.localeDataScript,
+              __html: this.props.localeDataScript,
             }}
           />
         </body>

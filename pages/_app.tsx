@@ -1,8 +1,11 @@
 import App from 'next/app';
+import Head from 'next/head';
 import React from 'react';
 import { createIntl, createIntlCache, RawIntlProvider } from 'react-intl';
 import { AppContextType } from 'next/dist/next-server/lib/utils';
 import { Router } from 'next/dist/client/router';
+// @ts-ignore
+import stylesheet from 'antd/dist/antd.min.css';
 import { IntlProps } from 'src/types/intlTypes';
 
 // This is optional but highly recommended
@@ -48,6 +51,11 @@ export default class MyApp extends App<IntlProps> {
 
     return (
       <RawIntlProvider value={intl}>
+        <Head>
+          <title>Default title</title>
+          <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+        </Head>
         <Component {...pageProps} />
       </RawIntlProvider>
     );
