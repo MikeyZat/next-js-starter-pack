@@ -2,7 +2,21 @@
   "presets": ["next/babel"],
   "env": {
     "development": {
-      "plugins": ["react-intl"]
+      "plugins": [
+        "react-intl",
+        [
+          "import",
+          {
+            "libraryName": "antd"
+          }
+        ],
+        [
+          "inline-import",
+          {
+            "extensions": [".css"]
+          }
+        ]
+      ]
     },
     "production": {
       "plugins": [
@@ -10,6 +24,18 @@
           "react-intl",
           {
             "messagesDir": "lang/.messages/"
+          }
+        ],
+        [
+          "import",
+          {
+            "libraryName": "antd"
+          }
+        ],
+        [
+          "inline-import",
+          {
+            "extensions": [".css"]
           }
         ]
       ]

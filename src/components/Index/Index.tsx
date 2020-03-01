@@ -1,6 +1,7 @@
 import React from 'react';
 import { NextPage } from 'next';
 import { defineMessages, useIntl } from 'react-intl';
+import { DatePicker } from 'antd';
 
 const Index: NextPage<IndexProps> = (props) => {
   const intl = useIntl();
@@ -9,6 +10,7 @@ const Index: NextPage<IndexProps> = (props) => {
     <div>
       <div>{props.name}</div>
       <div>{intl.formatMessage(messages.description)}</div>
+      <DatePicker />
     </div>
   );
 };
