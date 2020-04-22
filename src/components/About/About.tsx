@@ -1,12 +1,14 @@
 import React from 'react';
 import { NextPage, NextPageContext } from 'next';
 import { defineMessages, useIntl } from 'react-intl';
-import { Divider } from 'antd';
+import { Divider, Typography } from 'antd';
 import Layout from 'common/Layout';
 import Footer from 'common/Footer';
 import useSubnavigation from 'hooks/useSubnavigation';
 
-const Index: NextPage<IndexProps> = (props) => {
+const { Paragraph } = Typography;
+
+const About: NextPage<AboutProps> = (props) => {
   const intl = useIntl();
 
   const subMenuLinks = useSubnavigation();
@@ -15,9 +17,9 @@ const Index: NextPage<IndexProps> = (props) => {
   if (props.query && !Array.isArray(props.query)) {
     breadcrumbItems = [
       {
-        key: 'home',
-        label: intl.formatMessage(messages.home),
-        url: '/',
+        key: 'about',
+        label: intl.formatMessage(messages.about),
+        url: '/about',
       },
       {
         key: props.query,
@@ -27,8 +29,8 @@ const Index: NextPage<IndexProps> = (props) => {
   } else {
     breadcrumbItems = [
       {
-        key: 'home',
-        label: intl.formatMessage(messages.home),
+        key: 'about',
+        label: intl.formatMessage(messages.about),
       },
     ];
   }
@@ -36,47 +38,54 @@ const Index: NextPage<IndexProps> = (props) => {
   return (
     <Layout
       menuLinks={[
-        { key: 'home', label: intl.formatMessage(messages.home), url: '/', active: true },
-        { key: 'about', label: intl.formatMessage(messages.about), url: '/about' },
+        { key: 'home', label: intl.formatMessage(messages.home), url: '/' },
+        { key: 'about', label: intl.formatMessage(messages.about), url: '/about', active: true },
       ]}
       sideMenuLinks={subMenuLinks}
       breadcrumbItems={breadcrumbItems}
       footer={<Footer />}
     >
-      <Divider orientation="left">{intl.formatMessage(messages.header)}</Divider>
+      <>
+        <Divider orientation="left">{intl.formatMessage(messages.header)}</Divider>
+        <Paragraph>{intl.formatMessage(messages.description)}</Paragraph>
+      </>
     </Layout>
   );
 };
 
-export default Index;
+export default About;
 
-Index.getInitialProps = (context: NextPageContext) => ({
+About.getInitialProps = (context: NextPageContext) => ({
   query: context.query && context.query.query,
 });
 
-interface IndexProps {
+interface AboutProps {
   query: string | string[];
 }
 
 const messages = defineMessages({
   header: {
-    id: 'components.Index.header',
-    defaultMessage: `Welcome to the next-js starter pack`,
+    id: 'components.About.header',
+    defaultMessage: `Happy hacking`,
+  },
+  description: {
+    id: 'components.About.description',
+    defaultMessage: `Follow the guidance in the github repository and make sure you get 100% out of this project!`,
   },
   about: {
-    id: 'components.Index.about',
+    id: 'components.About.about',
     defaultMessage: `About`,
   },
   home: {
-    id: 'components.Index.home',
+    id: 'components.About.home',
     defaultMessage: `Home`,
   },
   page1: {
-    id: 'components.Index.page1',
+    id: 'components.About.page1',
     defaultMessage: `Sub-page1`,
   },
   page2: {
-    id: 'components.Index.page2',
+    id: 'components.About.page2',
     defaultMessage: `Sub-page2`,
   },
 });

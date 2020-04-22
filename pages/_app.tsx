@@ -52,7 +52,7 @@ export default class MyApp extends App<IntlProps> {
     return (
       <RawIntlProvider value={intl}>
         <Head>
-          <title>Default title</title>
+          <title>Default title - change it in _app.tsx</title>
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
         </Head>

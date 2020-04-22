@@ -23,7 +23,8 @@
       "common/*": ["src/components/common/*"],
       "hooks/*": ["src/utils/hooks/*"],
       "actions/*": ["src/action/*"],
-      "reducers/*": ["src/reducers/*"]
+      "reducers/*": ["src/reducers/*"],
+      "types/*": ["src/types/*"]
     }
   },
   "exclude": ["node_modules", "out", ".next"],

@@ -9,7 +9,7 @@ module.exports = {
     config.resolve.alias['hooks'] = path.resolve(__dirname, 'src/utils/hooks');
     config.resolve.alias['actions'] = path.resolve(__dirname, 'src/actions');
     config.resolve.alias['reducers'] = path.resolve(__dirname, 'src/reducers');
-
+    config.resolve.alias['types'] = path.resolve(__dirname, 'src/types');
     // HOT RELOADING
 
     if (dev) {
