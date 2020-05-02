@@ -26,7 +26,7 @@ const supportedLanguages = glob.sync('./lang/*.json').map((f) => basename(f, '.j
 // locale. This function will also cache the scripts by lang in memory.
 const localeDataCache = new Map();
 const getLocaleDataScript = (locale) => {
-  const lang = locale.split('-')[0];
+  const [lang] = locale.split('-');
   if (!localeDataCache.has(lang)) {
     const localeDataFile = require.resolve(`@formatjs/intl-relativetimeformat/dist/locale-data/${lang}`);
     const localeDataScript = readFileSync(localeDataFile, 'utf8');
