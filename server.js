@@ -40,7 +40,7 @@ const getLocaleDataScript = (locale) => {
 // each message description in the source code will be used.
 const getMessages = (locale) => {
   console.log(path.resolve(`./lang/${locale}.json`));
-  return require(`./lang/${locale}.json`);
+  return require(`./lang/${locale}.json`) || {};
 };
 
 app.prepare().then(() => {
@@ -49,7 +49,7 @@ app.prepare().then(() => {
     const locale = accept.language(supportedLanguages) || 'en';
     req.locale = locale;
     req.localeDataScript = getLocaleDataScript(locale);
-    req.messages = dev ? {} : getMessages(locale);
+    req.messages = getMessages(locale);
     handle(req, res);
   }).listen(port, (err) => {
     if (err) throw err;

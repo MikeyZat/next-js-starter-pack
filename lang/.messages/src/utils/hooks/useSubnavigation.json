@@ -1,0 +1,18 @@
+[
+  {
+    "id": "utils.hooks.useSubnavigation.about",
+    "defaultMessage": "About"
+  },
+  {
+    "id": "utils.hooks.useSubnavigation.home",
+    "defaultMessage": "Home"
+  },
+  {
+    "id": "utils.hooks.useSubnavigation.page1",
+    "defaultMessage": "Sub-page1"
+  },
+  {
+    "id": "utils.hooks.useSubnavigation.page2",
+    "defaultMessage": "Sub-page2"
+  }
+]

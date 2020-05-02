@@ -1,0 +1,26 @@
+[
+  {
+    "id": "components.About.header",
+    "defaultMessage": "Happy hacking"
+  },
+  {
+    "id": "components.About.description",
+    "defaultMessage": "Follow the guidance in the github repository and make sure you get 100% out of this project!"
+  },
+  {
+    "id": "components.About.about",
+    "defaultMessage": "About"
+  },
+  {
+    "id": "components.About.home",
+    "defaultMessage": "Home"
+  },
+  {
+    "id": "components.About.page1",
+    "defaultMessage": "Sub-page1"
+  },
+  {
+    "id": "components.About.page2",
+    "defaultMessage": "Sub-page2"
+  }
+]

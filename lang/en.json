@@ -1,3 +1,18 @@
 {
-  "components.Index.description": "Welcome to Mikey's app"
+  "components.About.header": "Happy hacking",
+  "components.About.description": "Follow the guidance in the github repository and make sure you get 100% out of this project!",
+  "components.About.about": "About",
+  "components.About.home": "Home",
+  "components.About.page1": "Sub-page1",
+  "components.About.page2": "Sub-page2",
+  "components.common.Footer": "Visit the github repository.",
+  "components.Index.header": "Welcome to the next-js starter pack",
+  "components.Index.about": "About",
+  "components.Index.home": "Home",
+  "components.Index.page1": "Sub-page1",
+  "components.Index.page2": "Sub-page2",
+  "utils.hooks.useSubnavigation.about": "About",
+  "utils.hooks.useSubnavigation.home": "Home",
+  "utils.hooks.useSubnavigation.page1": "Sub-page1",
+  "utils.hooks.useSubnavigation.page2": "Sub-page2"
 }

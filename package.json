@@ -8,8 +8,8 @@
   },
   "scripts": {
     "dev": "nodemon --icu-data-dir=node_modules/full-icu server.js",
-    "build": "next build && npm run extract",
-    "extract": "node ./scripts/extract '{pages,components}/*.{js,ts,tsx}'",
+    "build": "next build && npm run extract-messages",
+    "extract-messages": "node ./scripts/extract '{pages,components}/*.{js,ts,tsx}'",
     "start": "NODE_ENV=production node --icu-data-dir=node_modules/full-icu server.js",
     "lint": "eslint 'src/**'"
   },

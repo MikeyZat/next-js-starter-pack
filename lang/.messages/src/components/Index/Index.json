@@ -1,6 +1,22 @@
 [
   {
-    "id": "components.Index.description",
-    "defaultMessage": "Welcome to Mikey's app"
+    "id": "components.Index.header",
+    "defaultMessage": "Welcome to the next-js starter pack"
+  },
+  {
+    "id": "components.Index.about",
+    "defaultMessage": "About"
+  },
+  {
+    "id": "components.Index.home",
+    "defaultMessage": "Home"
+  },
+  {
+    "id": "components.Index.page1",
+    "defaultMessage": "Sub-page1"
+  },
+  {
+    "id": "components.Index.page2",
+    "defaultMessage": "Sub-page2"
   }
 ]
