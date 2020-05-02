@@ -24,7 +24,7 @@ module.exports = {
     'no-underscore-dangle': 0,
     'no-tabs': 2,
     'arrow-parens': ['error', 'always'],
-    'arrow-body-style': [2, 'as-needed'],
+    'arrow-body-style': [1, 'as-needed'],
     'array-callback-return': 2,
     'comma-dangle': [
       'error',
