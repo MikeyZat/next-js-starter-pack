@@ -1,15 +1,23 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NextPage, NextPageContext } from 'next';
 import { defineMessages, useIntl } from 'react-intl';
-import { Divider, Typography } from 'antd';
+import { Divider, Typography, Button } from 'antd';
 import Layout from 'common/Layout';
 import Footer from 'common/Footer';
-import useSubnavigation from 'hooks/useSubnavigation';
+import useSubnavigation from 'utils/hooks/useSubnavigation';
+import { getCounter } from 'reducers/exampleReducer';
+import { decrementCounter } from 'actions/exampleActions';
 
 const { Paragraph } = Typography;
 
 const About: NextPage<AboutProps> = (props) => {
   const intl = useIntl();
+  const dispatch = useDispatch();
+
+  const decrement = () => dispatch(decrementCounter());
+
+  const counter: number = useSelector(getCounter);
 
   const subMenuLinks = useSubnavigation();
 
@@ -48,6 +56,11 @@ const About: NextPage<AboutProps> = (props) => {
       <>
         <Divider orientation="left">{intl.formatMessage(messages.header)}</Divider>
         <Paragraph>{intl.formatMessage(messages.description)}</Paragraph>
+        {counter}
+        {'  '}
+        <Button type="primary" onClick={decrement}>
+          {intl.formatMessage(messages.decrement)}
+        </Button>
       </>
     </Layout>
   );
@@ -87,5 +100,9 @@ const messages = defineMessages({
   page2: {
     id: 'components.About.page2',
     defaultMessage: `Sub-page2`,
+  },
+  decrement: {
+    id: 'components.About.decrement',
+    defaultMessage: `Try redux and decrement the counter`,
   },
 });

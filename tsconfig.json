@@ -21,10 +21,10 @@
     "paths": {
       "components/*": ["src/components/*"],
       "common/*": ["src/components/common/*"],
-      "hooks/*": ["src/utils/hooks/*"],
-      "actions/*": ["src/action/*"],
+      "actions/*": ["src/actions/*"],
       "reducers/*": ["src/reducers/*"],
-      "types/*": ["src/types/*"]
+      "types/*": ["src/types/*"],
+      "utils/*": ["src/utils/*"]
     }
   },
   "exclude": ["node_modules", "out", ".next"],

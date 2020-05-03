@@ -37,7 +37,7 @@ module.exports = {
       },
     ],
     'default-case': 1,
-    'default-param-last': 1,
+    'default-param-last': 0,
     eqeqeq: 1,
     'import/no-dynamic-require': 0,
     'import/no-unresolved': 2,
@@ -90,6 +90,7 @@ module.exports = {
     'require-yield': 0,
     'import/no-webpack-loader-syntax': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/ban-ts-ignore': 0,
   },
   settings: {
     react: {

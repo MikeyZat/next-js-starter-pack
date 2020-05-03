@@ -1,12 +1,16 @@
 import App from 'next/app';
 import Head from 'next/head';
 import React from 'react';
+import { Provider } from 'react-redux';
+import withRedux from 'next-redux-wrapper';
 import { createIntl, createIntlCache, RawIntlProvider } from 'react-intl';
 import { AppContextType } from 'next/dist/next-server/lib/utils';
 import { Router } from 'next/dist/client/router';
 // @ts-ignore
 import stylesheet from 'antd/dist/antd.min.css';
-import { IntlProps } from 'src/types/intlTypes';
+import { IntlProps } from 'types/intlTypes';
+import { RootStore } from 'reducers/index';
+import initReduxStore from '../config/store';
 
 // This is optional but highly recommended
 // since it prevents memory leak
@@ -21,7 +25,11 @@ declare global {
   }
 }
 
-export default class MyApp extends App<IntlProps> {
+interface ProviderProps {
+  store: RootStore;
+}
+
+class MyApp extends App<IntlProps & ProviderProps> {
   static async getInitialProps({ Component, ctx }: AppContextType<Router>) {
     let pageProps = {};
 
@@ -39,7 +47,7 @@ export default class MyApp extends App<IntlProps> {
   }
 
   render() {
-    const { Component, pageProps, locale, messages } = this.props;
+    const { Component, pageProps, locale, messages, store } = this.props;
 
     const intl = createIntl(
       {
@@ -56,8 +64,14 @@ export default class MyApp extends App<IntlProps> {
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
         </Head>
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </RawIntlProvider>
     );
   }
 }
+
+const makeStore = () => initReduxStore;
+
+export default withRedux(makeStore)(MyApp);

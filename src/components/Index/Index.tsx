@@ -1,13 +1,20 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NextPage, NextPageContext } from 'next';
 import { defineMessages, useIntl } from 'react-intl';
-import { Divider } from 'antd';
+import { Divider, Button } from 'antd';
 import Layout from 'common/Layout';
 import Footer from 'common/Footer';
-import useSubnavigation from 'hooks/useSubnavigation';
+import useSubnavigation from 'utils/hooks/useSubnavigation';
+import { getCounter } from 'reducers/exampleReducer';
+import { incrementCounter } from 'actions/exampleActions';
 
 const Index: NextPage<IndexProps> = (props) => {
   const intl = useIntl();
+  const dispatch = useDispatch();
+
+  const counter = useSelector(getCounter);
+  const increment = () => dispatch(incrementCounter());
 
   const subMenuLinks = useSubnavigation();
 
@@ -44,6 +51,10 @@ const Index: NextPage<IndexProps> = (props) => {
       footer={<Footer />}
     >
       <Divider orientation="left">{intl.formatMessage(messages.header)}</Divider>
+      {counter}{' '}
+      <Button type="primary" onClick={increment}>
+        {intl.formatMessage(messages.increment)}
+      </Button>
     </Layout>
   );
 };
@@ -78,5 +89,9 @@ const messages = defineMessages({
   page2: {
     id: 'components.Index.page2',
     defaultMessage: `Sub-page2`,
+  },
+  increment: {
+    id: 'components.Index.increment',
+    defaultMessage: `Try redux and increment the counter`,
   },
 });
