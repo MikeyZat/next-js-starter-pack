@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import exampleReducer, { State as ExampleState } from './exampleReducer';
+import exampleReducer from './exampleReducer';
+import sliceReducer from './exampleSlice';
 
 const rootReducer = combineReducers({
   example: exampleReducer,
+  slice: sliceReducer,
 });
 
 export default rootReducer;
 
-export interface RootStore {
-  example: ExampleState;
-}
+export type RootState = ReturnType<typeof rootReducer>;

@@ -8,6 +8,7 @@ import Footer from 'common/Footer';
 import useSubnavigation from 'utils/hooks/useSubnavigation';
 import { getCounter } from 'reducers/exampleReducer';
 import { decrementCounter } from 'actions/exampleActions';
+import { decrement as decrementSliceCounter, getCounter as getSliceCounter } from 'reducers/exampleSlice';
 
 const { Paragraph } = Typography;
 
@@ -16,8 +17,10 @@ const About: NextPage<AboutProps> = (props) => {
   const dispatch = useDispatch();
 
   const decrement = () => dispatch(decrementCounter());
+  const decrementSlice = () => dispatch(decrementSliceCounter());
 
   const counter: number = useSelector(getCounter);
+  const sliceCounter: number = useSelector(getSliceCounter);
 
   const subMenuLinks = useSubnavigation();
 
@@ -56,11 +59,18 @@ const About: NextPage<AboutProps> = (props) => {
       <>
         <Divider orientation="left">{intl.formatMessage(messages.header)}</Divider>
         <Paragraph>{intl.formatMessage(messages.description)}</Paragraph>
-        {counter}
-        {'  '}
-        <Button type="primary" onClick={decrement}>
-          {intl.formatMessage(messages.decrement)}
-        </Button>
+        <div>
+          {counter}
+          {'  '}
+          <Button type="primary" onClick={decrement}>
+            {intl.formatMessage(messages.decrement)}
+          </Button>
+        </div>
+        <div>
+          {sliceCounter}
+          {'  '}
+          <Button onClick={decrementSlice}>{intl.formatMessage(messages.decrementSlice)}</Button>
+        </div>
       </>
     </Layout>
   );
@@ -104,5 +114,9 @@ const messages = defineMessages({
   decrement: {
     id: 'components.About.decrement',
     defaultMessage: `Try redux and decrement the counter`,
+  },
+  decrementSlice: {
+    id: 'components.About.decrementSlice',
+    defaultMessage: `Try @reduxjs/toolkit and decrement the slice counter`,
   },
 });

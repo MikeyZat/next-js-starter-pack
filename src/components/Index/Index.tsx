@@ -8,13 +8,17 @@ import Footer from 'common/Footer';
 import useSubnavigation from 'utils/hooks/useSubnavigation';
 import { getCounter } from 'reducers/exampleReducer';
 import { incrementCounter } from 'actions/exampleActions';
+import { increment as incrementSliceCounter, getCounter as getSliceCounter } from 'reducers/exampleSlice';
 
 const Index: NextPage<IndexProps> = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
 
-  const counter = useSelector(getCounter);
   const increment = () => dispatch(incrementCounter());
+  const incrementSlice = () => dispatch(incrementSliceCounter());
+
+  const counter: number = useSelector(getCounter);
+  const sliceCounter: number = useSelector(getSliceCounter);
 
   const subMenuLinks = useSubnavigation();
 
@@ -50,11 +54,18 @@ const Index: NextPage<IndexProps> = (props) => {
       breadcrumbItems={breadcrumbItems}
       footer={<Footer />}
     >
-      <Divider orientation="left">{intl.formatMessage(messages.header)}</Divider>
-      {counter}{' '}
-      <Button type="primary" onClick={increment}>
-        {intl.formatMessage(messages.increment)}
-      </Button>
+      <>
+        <Divider orientation="left">{intl.formatMessage(messages.header)}</Divider>
+        <div>
+          {counter}{' '}
+          <Button type="primary" onClick={increment}>
+            {intl.formatMessage(messages.increment)}
+          </Button>
+        </div>
+        <div>
+          {sliceCounter} <Button onClick={incrementSlice}>{intl.formatMessage(messages.incrementSlice)}</Button>
+        </div>
+      </>
     </Layout>
   );
 };
@@ -93,5 +104,9 @@ const messages = defineMessages({
   increment: {
     id: 'components.Index.increment',
     defaultMessage: `Try redux and increment the counter`,
+  },
+  incrementSlice: {
+    id: 'components.Index.incrementSlice',
+    defaultMessage: `Try @reduxjs/toolkit and increment the slice counter`,
   },
 });

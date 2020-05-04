@@ -1,6 +1,6 @@
 import * as types from 'utils/actionTypes';
 
-export interface State {
+interface State {
   counter: number;
 }
 
@@ -8,7 +8,7 @@ const initState: State = {
   counter: 0,
 };
 
-const exampleReducer = (state = initState, action) => {
+const exampleReducer = (state: State = initState, action) => {
   switch (action.type) {
     case types.INCREMENT_COUNTER:
       return {

@@ -9,7 +9,7 @@ import { Router } from 'next/dist/client/router';
 // @ts-ignore
 import stylesheet from 'antd/dist/antd.min.css';
 import { IntlProps } from 'types/intlTypes';
-import { RootStore } from 'reducers/index';
+import { RootState } from 'reducers/index';
 import initReduxStore from '../config/store';
 
 // This is optional but highly recommended
@@ -26,7 +26,7 @@ declare global {
 }
 
 interface ProviderProps {
-  store: RootStore;
+  store: RootState;
 }
 
 class MyApp extends App<IntlProps & ProviderProps> {

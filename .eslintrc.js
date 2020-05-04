@@ -69,7 +69,7 @@ module.exports = {
     'no-console': 1,
     'no-use-before-define': 0,
     'no-template-curly-in-string': 1,
-    'no-param-reassign': 1,
+    'no-param-reassign': 0,
     'no-useless-return': 1,
     'padded-blocks': 0,
     'prefer-template': 2,
