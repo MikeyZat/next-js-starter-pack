@@ -12,7 +12,7 @@ const { createServer } = require('http');
 const accepts = require('accepts');
 const glob = require('glob');
 const next = require('next');
-const path = require('path');
+// const path = require('path');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -38,10 +38,7 @@ const getLocaleDataScript = (locale) => {
 // We need to load and expose the translations on the request for the user's
 // locale. These will only be used in production, in dev the `defaultMessage` in
 // each message description in the source code will be used.
-const getMessages = (locale) => {
-  console.log(path.resolve(`./lang/${locale}.json`));
-  return require(`./lang/${locale}.json`) || {};
-};
+const getMessages = (locale) => require(`./lang/${locale}.json`) || {};
 
 app.prepare().then(() => {
   createServer((req, res) => {

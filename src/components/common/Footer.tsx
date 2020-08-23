@@ -4,7 +4,7 @@ import { Button } from 'antd';
 
 const Footer = () => {
   const intl = useIntl();
-  const repoUrl = 'https://www.github.com';
+  const repoUrl = 'https://github.com/MikeyZat/next-js-starter-pack';
 
   return (
     <Button type="link" href={repoUrl} target="_blank">
