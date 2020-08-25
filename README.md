@@ -53,6 +53,10 @@ To contribute, follow steps below:
 - assign me for a review
 - enjoy your contribution :heavy_check_mark:
 
+## :pencil: License
+
+Developed under the [MIT license](/LICENSE) and yeah, that's good news.
+
 ## Contributors
 
 <table>
